@@ -1,10 +1,10 @@
 import React from 'react';
+import Form from './../forms/Form';
 
-const Parts: React.FC = () => {
-    return (
-      <h1>Parts Page</h1>      
-    );
-  }
-  
+export const Parts: React.FC = (props: any) => {
+  return (
+    <Form {...props} />
+  );
+}
+
 export default Parts;
-  
