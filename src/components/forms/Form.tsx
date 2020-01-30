@@ -14,6 +14,14 @@ export const Form: React.FC<InjectedFormProps> = (props: any) => {
 
     const onSubmitPageOne = (values: any) => {
         props.dispatch(addNumberParts(values));
+        nextPage()
+    };
+
+    const onSubmitPageTwo = (values: any) => {
+        nextPage()
+    };
+
+    const nextPage = () => {
         setPage(page + 1);
     };
 
@@ -28,7 +36,7 @@ export const Form: React.FC<InjectedFormProps> = (props: any) => {
             completeColor={'royalblue'} defaultColor={'royalblue'} activeColor={'royalblue'} />
             {page === 0 && <NumberPartsForm onSubmit={onSubmitPageOne} />}
             {page === 1 && (
-                <CreatePartsForm previousPage={previousPage} onSubmit={onSubmitPageOne} />
+                <CreatePartsForm previousPage={previousPage} onSubmit={onSubmitPageTwo} />
             )}
             {page === 2 && <Success />}
         </div>

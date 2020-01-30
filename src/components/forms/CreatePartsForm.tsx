@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import ReduxFormInput from '../../components/forms/ReduxFormInput';
-import validate from './validate';
+import { validate } from './partsFieldValidate';
 import { PreviousBtn, NextBtn } from "./../../styles/style"
 
 interface Props {
@@ -10,31 +10,35 @@ interface Props {
     onSubmit: any
 }
 
-const mapStateToProps = (state: { part : {data: any; }}) => {
-    return { data: state.part.data };
-  };
+var defaultSlots:any = {}
+
+const mapStateToProps = (state: any) => {
+    for(let i=0; i<parseInt(state.part.data[0]['numberParts']); i++) {
+        defaultSlots['part_'+i] = ''
+    }
+};
 
 export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
   const { handleSubmit, previousPage } = props;
-
-  const createFields = () => 
-    Array.apply(null, Array(parseInt(props.data[0]['numberParts']))).map((x, index) => {
-        index++;
-        return <Field
-            name={"numberParts" + index}
-            type="text"
-            key={index}
-            component={ReduxFormInput}
-            label={"Part " + index + " %"} 
-        /> 
-    })
-  
-  
+ 
+  const renderParts = ( ) => {
+    return Object.keys(defaultSlots).map((x, index) => (
+        <Field
+                name={'part_'+index}
+                type="text"
+                key={index}
+                component={ReduxFormInput}
+                label={"Part " + (index + 1) + " %"}
+        />
+    ))
+  }
+    
+    
   return (
     <form onSubmit={handleSubmit} noValidate={true}>
         <div className="col-sm-12">
             <div className="part-padding">
-                {createFields()}
+                {renderParts()}
             </div>
             
             <div className="form-group">
@@ -59,6 +63,7 @@ export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (
 const form = reduxForm<{}, Props>({
   form: 'create_part',
   validate,
+  initialValues: defaultSlots,
 })(CreatePartsForm);
 
 export default connect(mapStateToProps)(form);
