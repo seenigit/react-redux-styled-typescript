@@ -2,7 +2,7 @@
 **Description:**
 Simple redux forms with dynamic fields inside stepper horizontal component
 
-**App Setup:**
+**Application Setup:**
 <pre>
 * git clone https://github.com/seenigit/react-redux-styled-typescript.git
 * cd react-redux-styled-typescript
