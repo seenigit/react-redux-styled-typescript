@@ -26,7 +26,10 @@ export const Form: React.FC<InjectedFormProps> = (props: any) => {
     };
 
     const previousPage = () => {
-        setPage(page - 1);
+        //setPage(page - 1);
+
+        //redux-form issue - Not removing dynamically added fields after component unmount. 
+        window.location.reload()
     };
 
     return (

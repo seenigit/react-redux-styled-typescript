@@ -16,6 +16,9 @@ const mapStateToProps = (state: any) => {
     for(let i=0; i<parseInt(state.part.data[0]['numberParts']); i++) {
         defaultSlots['part_'+i] = ''
     }
+
+    //must return a plain object
+    return {}
 };
 
 export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
