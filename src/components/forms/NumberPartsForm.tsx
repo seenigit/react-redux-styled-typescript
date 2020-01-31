@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 
 interface Props { };
 
-export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
+//'any' type added for 'NumberPartsForm.test.tsx'
+export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props> | any> = (props: any) => {
   const { handleSubmit } = props;
 
   return (
@@ -20,7 +21,7 @@ export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (
                     name="numberParts"
                     type="text"
                     component={ReduxFormInput}
-                    label="Number Of Parts: "
+                    label="Number of parts: "
                     placeHolder="Enter Number Of Parts"
                 />
             </div>
