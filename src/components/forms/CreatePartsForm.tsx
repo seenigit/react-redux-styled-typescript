@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import ReduxFormInput from '../../components/forms/ReduxFormInput';
@@ -13,16 +13,22 @@ interface Props {
 var defaultSlots:any = {}
 
 const mapStateToProps = (state: any) => {
-    for(let i=0; i<parseInt(state.part.data[0]['numberParts']); i++) {
-        defaultSlots['part_'+i] = ''
-    }
-
-    //must return a plain object
-    return {}
+    return {data: state.part.data}
 };
 
 export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
   const { handleSubmit, previousPage } = props;
+  
+  useEffect(() => {
+    defaultSlots = {}
+    
+    for(let i=0; i<parseInt(props.data[0]['numberParts']); i++) {
+        defaultSlots['part_'+i] = ''
+    }
+
+    props.initialize(defaultSlots)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
  
   const renderParts = ( ) => {
     return Object.keys(defaultSlots).map((x, index) => (
@@ -66,7 +72,6 @@ export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (
 const form = reduxForm<{}, Props>({
   form: 'create_part',
   validate,
-  initialValues: defaultSlots,
 })(CreatePartsForm);
 
 export default connect(mapStateToProps)(form);
