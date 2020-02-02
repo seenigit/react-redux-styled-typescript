@@ -9,23 +9,23 @@ import { addNumberParts } from '../../redux/actions/addNumberParts';
 
 
 export const Form: React.FC<InjectedFormProps> = (props: any) => {
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState<number>(0);
     const steps = [{ title: '' }, { title: '' }, { title: '' }];
 
-    const onSubmitPageOne = (values: any) => {
+    const onSubmitPageOne = (values: string): void => {
         props.dispatch(addNumberParts(values));
-        nextPage()
+        nextPage();
     };
 
-    const onSubmitPageTwo = (values: any) => {
-        nextPage()
+    const onSubmitPageTwo = (): void => {
+        nextPage();
     };
 
-    const nextPage = () => {
+    const nextPage = (): void => {
         setPage(page + 1);
     };
 
-    const previousPage = () => {
+    const previousPage = (): void => {
         setPage(page - 1);
     };
 

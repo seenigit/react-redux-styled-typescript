@@ -7,10 +7,12 @@ import validate from './validate';
 import { PreviousBtn, NextBtn } from "./../../styles/style"
 import { Link } from "react-router-dom";
 
-interface Props { };
+interface Props { 
+    onSubmit: any
+};
 
 //'any' type added for 'NumberPartsForm.test.tsx'
-export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props> | any> = (props: any) => {
+export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props) => {
   const { handleSubmit } = props;
 
   return (

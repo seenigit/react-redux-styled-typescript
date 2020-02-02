@@ -6,8 +6,8 @@ import { validate } from './partsFieldValidate';
 import { PreviousBtn, NextBtn } from "./../../styles/style"
 
 interface Props {
-    previousPage: any;
-    onSubmit: any
+    previousPage: () => void;
+    onSubmit: () => void;
 }
 
 var defaultSlots:any = {}

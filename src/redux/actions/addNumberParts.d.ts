@@ -1,10 +1,10 @@
+import { ADD_NUMBER_PARTS } from './../actionTypes/partTypes';
+
 export interface NumberPartState {
-    data: NumberPartData[];
+    data: string[];
 }
 
-export interface PartAction {
-    type: string;
+export type PartTypes = {
+    type: ADD_NUMBER_PARTS;
     payload: any;
-}
-
-export type PartTypes = PartAction;
+};
