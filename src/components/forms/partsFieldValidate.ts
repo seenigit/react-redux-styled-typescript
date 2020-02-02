@@ -1,8 +1,7 @@
 import { FormErrors } from 'redux-form';
-import { PartsFieldsParam } from './../../interfaces/NumberParts.d';
 
-export const validate = (values: any): FormErrors<PartsFieldsParam> => {
-    const errors: FormErrors<PartsFieldsParam | any> = {};
+export const validate = (values: any): FormErrors => {
+    const errors: any = {};
 
     for(let i=0; i<Object.keys(values).length; i++) {
         if(!values['part_'+i]) {

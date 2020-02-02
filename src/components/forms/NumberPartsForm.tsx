@@ -12,7 +12,7 @@ interface Props {
 };
 
 //'any' type added for 'NumberPartsForm.test.tsx'
-export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props) => {
+export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props> | any> = (props) => {
   const { handleSubmit } = props;
 
   return (
@@ -38,7 +38,7 @@ export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (
                     </Link>
                 
                 
-                    <NextBtn
+                    <NextBtn className="next-button"
                         onClick={handleSubmit}
                     >
                         Next

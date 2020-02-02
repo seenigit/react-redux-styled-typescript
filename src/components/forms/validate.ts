@@ -6,6 +6,8 @@ const validate = (values: NumberPartsParam): FormErrors<NumberPartsParam> => {
 
     if (!values.numberParts) {
       errors.numberParts = 'Number of parts is required';
+    } else if(isNaN(values.numberParts)) {
+      errors.numberParts = 'Number of parts should be number'
     }
 
     return errors;
