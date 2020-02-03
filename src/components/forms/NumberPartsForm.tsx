@@ -31,7 +31,7 @@ export const NumberPartsForm: React.FC<Props & InjectedFormProps<{}, Props> | an
             <div className="form-group">
                 <div className="col-6 float-right">
                     <Link to="/">
-                        <PreviousBtn
+                        <PreviousBtn className="prev-button"
                         > 
                             Previous
                         </PreviousBtn>

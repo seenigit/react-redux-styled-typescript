@@ -5,12 +5,12 @@ export const validate = (values: any): FormErrors => {
 
     for(let i=0; i<Object.keys(values).length; i++) {
         if(!values['part_'+i]) {
-            errors['part_'+i] = 'Part percent is required'
+            errors['part_'+i] = 'Part ' + (i + 1) + ' % is required'
         }
         else if(isNaN(values['part_'+i])) {
-            errors['part_'+i] = 'Part percent should be number'
+            errors['part_'+i] = 'Part ' + (i + 1) + ' % should be number'
         } else if(parseInt(values['part_'+i]) !== 100) {
-            errors['part_'+i] = 'Part percent should be 100'
+            errors['part_'+i] = 'Part ' + (i + 1) + ' % should be 100'
         }
     }
     

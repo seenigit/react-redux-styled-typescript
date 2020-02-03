@@ -16,7 +16,7 @@ const mapStateToProps = (state: any) => {
     return {data: state.part.data}
 };
 
-export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
+export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props> | any> = (props: any) => {
   const { handleSubmit, previousPage } = props;
   
   useEffect(() => {
@@ -52,12 +52,13 @@ export const CreatePartsForm: React.FC<Props & InjectedFormProps<{}, Props>> = (
             
             <div className="form-group">
                 <div className="col-6 float-right">                    
-                    <PreviousBtn onClick={previousPage}
+                    <PreviousBtn className="prev-button"
+                     onClick={previousPage}
                     > 
                         Previous
                     </PreviousBtn>
                 
-                    <NextBtn
+                    <NextBtn className="next-button"
                         onClick={handleSubmit}
                     >
                         Next

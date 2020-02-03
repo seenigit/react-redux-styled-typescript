@@ -29,9 +29,9 @@ describe('<NumberPartsForm />', () => {
 
     describe('form validation', () => {
         let numberOfPartsField: ShallowWrapper;
-        let onSubmit:any;
-
-        beforeEach(() => {
+        let onSubmit:() => void;
+        
+        beforeAll(() => {
             onSubmit = jest.fn(() => console.log('Mocked Function'));
             const props:any = {
                 handleSubmit: onSubmit
