@@ -70,7 +70,7 @@ describe('<NumberPartsForm />', () => {
 
         it("Submit form on click next button", () => {
             numberOfPartsField = wrapper.find('input[name="numberParts"]');
-            numberOfPartsField.simulate('change', {target: {value: 'Testing'}});
+            numberOfPartsField.simulate('change', {target: {value: 3}});
             const nextBtn = wrapper.find('.next-button').first()
             nextBtn.simulate('click')
 
